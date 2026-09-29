@@ -8,7 +8,7 @@
     "kind": "root",
     "target": "layers/demo-hello"
   },
-  "icon": "i-solar:hand-shake-bold-duotone",
+  "icon": "app/assets/images/logo.png",
   "dependsOn": [],
   "author": "kuroneko",
   "license": "MIT",
