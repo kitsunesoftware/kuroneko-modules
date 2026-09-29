@@ -1,0 +1,20 @@
+{
+  "id": "demo.hello.notes",
+  "name": "Hello Notes",
+  "description": "Submódulo de exemplo: anotações ligadas ao Hello Demo.",
+  "version": "1.0.0",
+  "parentId": "demo.hello",
+  "layer": {
+    "kind": "child",
+    "parent": "demo-hello",
+    "target": "layers/demo-hello/modules/notes"
+  },
+  "icon": "i-solar:notes-bold-duotone",
+  "dependsOn": ["demo.hello"],
+  "author": "kuroneko",
+  "license": "MIT",
+  "prisma": {
+    "schema": "prisma/schema.prisma",
+    "tables": ["HelloNote"]
+  }
+}
