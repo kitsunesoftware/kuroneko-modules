@@ -1,0 +1,26 @@
+{
+  "id": "auth.two-factor",
+  "name": "Autenticação de dois fatores",
+  "description": "2FA por app autenticador e chave de segurança.",
+  "version": "1.0.0",
+  "parentId": "auth.account",
+  "layer": {
+    "kind": "child",
+    "parent": "auth",
+    "target": "layers/auth/modules/two-factor"
+  },
+  "icon": "i-solar:shield-keyhole-bold-duotone",
+  "dependsOn": ["auth.account"],
+  "author": "kuroneko",
+  "license": "MIT",
+  "minKuroneko": "1.0.0",
+  "prisma": {
+    "schema": "prisma/schema.prisma",
+    "tables": [
+      "TwoFactorSettings",
+      "TwoFactorRecoveryCode",
+      "TwoFactorLoginChallenge",
+      "WebAuthnCredential"
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+/// Schema do submódulo auth.two-factor
+model TwoFactorSettings {
+  id             String   @id @default(cuid())
+  userId         String   @unique
+  totpEnabled    Boolean  @default(false)
+  /// Segredo TOTP ativo (AES-GCM + authSecret).
+  totpSecretEnc  String?
+  /// Segredo pendente durante o setup (ainda não confirmado).
+  totpPendingEnc String?
+  /// Último timestep TOTP consumido (anti-replay).
+  totpLastStep   Int?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model TwoFactorRecoveryCode {
+  id        String    @id @default(cuid())
+  userId    String
+  codeHash  String
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([userId])
+  @@index([userId, usedAt])
+}
+
+model TwoFactorLoginChallenge {
+  id        String   @id @default(cuid())
+  /// Token opaco enviado ao cliente.
+  token     String   @unique
+  userId    String
+  /// JSON: opções WebAuthn de autenticação (se aplicável).
+  webauthnOptions Json?
+  attempts  Int      @default(0)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+model WebAuthnCredential {
+  id           String    @id @default(cuid())
+  userId       String
+  /// credentialID em base64url
+  credentialId String    @unique
+  /// Chave pública (COSE) em base64url
+  publicKey    String
+  counter      BigInt    @default(0)
+  /// JSON string[] de transports
+  transports   String?
+  name         String?
+  createdAt    DateTime  @default(now())
+  lastUsedAt   DateTime?
+
+  @@index([userId])
+}

@@ -1,0 +1,17 @@
+{
+  "id": "auth.devices",
+  "name": "Dispositivos conectados",
+  "description": "Sessões ativas e encerramento remoto.",
+  "version": "1.0.0",
+  "parentId": "auth.account",
+  "layer": {
+    "kind": "child",
+    "parent": "auth",
+    "target": "layers/auth/modules/devices"
+  },
+  "icon": "i-solar:devices-bold-duotone",
+  "dependsOn": ["auth.account"],
+  "author": "kuroneko",
+  "license": "MIT",
+  "minKuroneko": "1.0.0"
+}
