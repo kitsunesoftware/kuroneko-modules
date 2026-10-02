@@ -9,7 +9,7 @@
     "parent": "auth",
     "target": "layers/auth/modules/turnstile"
   },
-  "icon": "i-solar:shield-keyhole-bold-duotone",
+  "icon": "assets/images/logo.png",
   "dependsOn": ["auth.login"],
   "author": "kuroneko",
   "license": "MIT",
