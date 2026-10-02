@@ -9,7 +9,7 @@
     "parent": "panel",
     "target": "layers/panel/modules/seafile"
   },
-  "icon": "i-solar:cloud-storage-bold-duotone",
+  "icon": "assets/images/logo.png",
   "dependsOn": ["panel"],
   "author": "kuroneko",
   "license": "MIT",
