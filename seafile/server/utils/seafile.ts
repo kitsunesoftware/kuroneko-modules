@@ -1,23 +1,19 @@
 /**
  * Cliente Seafile compartilhado.
- * Outros módulos importam daqui para upload/delete/download usando a conexão
- * configurada em panel.seafile.
+ * Registra a API no bridge da plataforma (`registerSeafileApi`) para outros módulos.
  */
 import {
   getModuleSettings,
   patchModuleSettings,
 } from '../../../../../base/server/utils/module-settings'
+import type {
+  SeafileConnection,
+  SeafileUploadOptions,
+} from '../../../../../base/server/utils/seafile-bridge'
 import {
   SEAFILE_MODULE_ID,
   seafileSettingsDefaults,
 } from '../../shared/seafile-settings'
-
-export type SeafileConnection = {
-  server: string
-  repoId: string
-  token: string
-  defaultPath: string
-}
 
 function asString(value: unknown, fallback = '') {
   return typeof value === 'string' ? value.trim() : fallback
@@ -314,16 +310,6 @@ async function getSeafileUploadLink(
   }
   // FILE_SERVER_ROOT interno (MinIO etc.) → host público do módulo.
   return rewriteSeafileFileUrl(uploadLink, conn.server)
-}
-
-export type SeafileUploadOptions = {
-  /** Pasta destino dentro da library (ex.: /avatars). */
-  parentDir: string
-  filename: string
-  buffer: Buffer
-  contentType?: string
-  /** Se true, valida o token via account/info antes do upload. Default: true. */
-  validateToken?: boolean
 }
 
 /**
