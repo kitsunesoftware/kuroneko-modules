@@ -1,0 +1,17 @@
+{
+  "id": "panel.seafile",
+  "name": "Seafile",
+  "description": "Armazenamento de arquivos via Seafile, disponível para outros módulos.",
+  "version": "1.0.0",
+  "parentId": "panel",
+  "layer": {
+    "kind": "child",
+    "parent": "panel",
+    "target": "layers/panel/modules/seafile"
+  },
+  "icon": "i-solar:cloud-storage-bold-duotone",
+  "dependsOn": ["panel"],
+  "author": "kuroneko",
+  "license": "MIT",
+  "minKuroneko": "1.0.0"
+}

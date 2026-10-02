@@ -1,7 +1,0 @@
-/// Schema do submódulo demo.hello.notes
-model HelloNote {
-  id        String   @id @default(cuid())
-  body      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
